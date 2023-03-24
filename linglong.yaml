@@ -1,0 +1,31 @@
+package:
+  id: aria2
+  name: aria2
+  version: 1.34.0
+  kind: lib
+  description: |
+    aria2.
+
+base:
+  id: org.deepin.base
+  version: 20.5.0
+
+source:
+  kind: git
+  url: https://github.com/deepin-community/aria2.git
+  version: master
+  commit: ace6bbcfdd6b2d9836c615ba1c5b3390c4e7cb65
+  patch: []
+build:
+  kind: manual
+  manual:
+    configure: |
+      #exec bash
+      autoreconf -ivf
+      ./configure --prefix=${PREFIX} \
+                  --with-gnutls \
+                  --without-openssl \
+                  --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt \
+                  --enable-libaria2
+      make -j6
+      make -j install
