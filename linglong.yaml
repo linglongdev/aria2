@@ -20,8 +20,8 @@ build:
   kind: manual
   manual:
     configure: |
-      #exec bash
-      autoreconf -ivf
+      # exec bash
+      # autoreconf -ivf
       ./configure --prefix=${PREFIX} \
                   --with-gnutls \
                   --without-openssl \
